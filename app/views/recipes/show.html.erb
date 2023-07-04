@@ -10,4 +10,11 @@
                   } %></li>
 </ul>
 
+<h2>Ingredients:</h2>
+<% @recipe.ingredients.each do |ingredient| %>
+  <p>
+    <%= ingredient.name %>
+  </p>
+<% end %>
+
 <p><%= link_to "Back to recipes", root_path %></p>

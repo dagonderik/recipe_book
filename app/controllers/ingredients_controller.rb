@@ -1,13 +1,30 @@
 class IngredientsController < ApplicationController
+  
+  def index
+    @ingredients = Ingredient.all
+  end
+
+  def new
+    @ingredient = Ingredient.new
+  end
+
+  def show
+    @ingredient = Ingredient.find(params[:id])
+  end
+
   def create
-    @recipe = recipe.find(params[:recipe_id])
-    @comment = @recipe.Ingredients.create(ingredient_params)
-    redirect_to recipe_path(@recipe)
+    @ingredient = Ingredient.new(ingredient_params)
+    
+    if @ingredient.save()
+      redirect_to @ingredient
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
     def ingredient_params
-      params.require(:Ingredient).permit(:name)
+      params.require(:ingredient).permit(:name)
     end
 
 end
