@@ -15,7 +15,11 @@
     <% end %>
   </div>
 
-  <div>
+  <% Ingredient.where(id: 0..20).each do |ingredient| %>
+    <p> <%= ingredient.name %> </p>
+  <% end %>
+
+
     <%= form.submit %>
   </div>
 <% end %>
